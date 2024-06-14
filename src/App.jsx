@@ -5,7 +5,20 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-  todoList = []
+  todoList = [
+    {
+      "id": 1,
+      "title": "Complete assignment"
+    },
+    {
+      "id": 2,
+      "title": "Create logo"
+    },
+    {
+      "id": 3,
+      "title": "Create vinyl design"
+    }
+  ]
 
   return (
     <div>
