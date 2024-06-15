@@ -5,7 +5,7 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-  todoList = [
+  const todoList = [
     {
       id: 1,
       title: "Complete assignment"
