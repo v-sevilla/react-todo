@@ -7,16 +7,16 @@ function App() {
   const [count, setCount] = useState(0)
   todoList = [
     {
-      "id": 1,
-      "title": "Complete assignment"
+      id: 1,
+      title: "Complete assignment"
     },
     {
-      "id": 2,
-      "title": "Create logo"
+      id: 2,
+      title: "Create logo"
     },
     {
-      "id": 3,
-      "title": "Create vinyl design"
+      id: 3,
+      title: "Create vinyl design"
     }
   ]
 
