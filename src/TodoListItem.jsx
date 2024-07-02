@@ -3,8 +3,8 @@ import React from "react";
 
 function TodoListItem() {
     return (
-        <div></div>
+        <li>{item.title}</li>
     )
-  }
+}
   
-  export default TodoListItem
+export default TodoListItem
