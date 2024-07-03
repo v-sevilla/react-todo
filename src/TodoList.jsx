@@ -4,7 +4,7 @@ import TodoListItem from "./TodoListItem";
 const todoList = [
     {
       id: 1,
-      title: "Complete lesson 1_2"
+      title: "Submit weekly assignment"
     },
     {
       id: 2,
@@ -21,7 +21,7 @@ function TodoList() {
     <div>
       <ul>
         {todoList.map(function(item){
-          return <TodoListItem />;
+          <TodoListItem key={item.id} todo={item}/>;
         })}
       </ul>
     </div>
