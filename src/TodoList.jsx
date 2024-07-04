@@ -15,7 +15,7 @@ const todoList = [
   }
 ]
 
-function TodoList() {
+const TodoList = () => {
   return (
     <div>
       <ul>

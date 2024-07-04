@@ -3,7 +3,7 @@ import './App.css'
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 
-function App() {
+const App = () => {
 
   return (
     <div>

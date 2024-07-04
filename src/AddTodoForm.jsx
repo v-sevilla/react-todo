@@ -1,6 +1,6 @@
 import React from "react";
 
-function AddTodoForm() {
+const AddTodoForm = () => {
     return (
       <div>
         <form>
