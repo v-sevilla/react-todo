@@ -19,8 +19,8 @@ const TodoList = () => {
   return (
     <div>
       <ul>
-        {todoList.map(function (item) {
-          return <li key={item.id}>{item.title}</li>;
+        {todoList.map(function(item){
+          return
         })}
       </ul>
     </div>
