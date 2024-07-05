@@ -10,7 +10,7 @@ const AddTodoForm = () => {
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleAddTodo}>
           <label htmlFor="todoTitle">Title</label>
           <input id="todoTitle" name="title" onChange={handleAddTodo}></input>
           <button>Add</button>
