@@ -3,13 +3,11 @@ import TodoListItem from "./TodoListItem";
 
 const TodoList = (props) => {
   return (
-    <div>
-      <ul>
-        {props.list.map(function(item){
-          <TodoListItem key={item.id} todo={item}/>
-        })}
-      </ul>
-    </div>
+    <ul>
+      {props.list.map((item) => (
+        <TodoListItem key={item.id} todo={item}/>
+      ))}
+    </ul>
   )
 }
 
