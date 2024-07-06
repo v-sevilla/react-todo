@@ -5,7 +5,7 @@ import AddTodoForm from './AddTodoForm';
 
 const App = () => {
 
-  const todoList = [
+  const [newTodo, setNewTodo] = useState([
     {
       id: 1,
       title: "Submit weekly assignment"
@@ -18,13 +18,13 @@ const App = () => {
       id: 3,
       title: "Create vinyl design"
     }
-  ]
+  ])
 
   return (
     <div>
       <h1>Todo List</h1>
       <AddTodoForm />
-      <TodoList list={todoList}/>
+      <TodoList list={newTodo}/>
     </div>
   );
 }
