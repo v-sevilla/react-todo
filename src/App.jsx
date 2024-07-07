@@ -20,10 +20,14 @@ const App = () => {
     }
   ])
 
+  const handleAddTodo = (todoTitle) => {
+    console.log(todoTitle.target.value)
+  }
+
   return (
     <div>
       <h1>Todo List</h1>
-      <AddTodoForm />
+      <AddTodoForm onAddTodo={handleAddTodo}/>
       <TodoList list={newTodo}/>
     </div>
   );
