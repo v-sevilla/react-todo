@@ -7,7 +7,11 @@ const AddTodoForm = (props) => {
   const handleAddTodo = (todoTitle) => {
     todoTitle.preventDefault();
     setNewTodo(todoTitle.target.value);
-    props.onAddTodo(todoTitle);
+    todoTitle.target.reset()
+  }
+
+  const addTodo = () => {
+    props.onAddTodo(newTodo)
   }
 
   return (
@@ -16,7 +20,7 @@ const AddTodoForm = (props) => {
           <label htmlFor="todoTitle">Title</label>
           <input id="todoTitle" name="title" onChange={handleAddTodo}></input>
           <p>{newTodo}</p>
-          <button>Add</button>
+          <button onClick={addTodo}>Add</button>
       </form>
     </div>
   )
