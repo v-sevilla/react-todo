@@ -21,7 +21,8 @@ const App = () => {
   ])
 
   const handleAddTodo = (todoTitle) => {
-    console.log(todoTitle.target.value)
+    const tempAry = [...newTodo,{id:newTodo.length +1,title:todoTitle}]
+    setNewTodo(tempAry)
   }
 
   return (
