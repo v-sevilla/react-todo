@@ -20,15 +20,10 @@ const App = () => {
     }
   ])
 
-  const handleAddTodo = (todoTitle) => {
-    const tempAry = [...newTodo,{id:newTodo.length +1,title:todoTitle}]
-    setNewTodo(tempAry)
-  }
-
   return (
     <div>
       <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={handleAddTodo}/>
+      <AddTodoForm onAddTodo={setNewTodo}/>
       <TodoList list={newTodo}/>
     </div>
   );
