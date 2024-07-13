@@ -20,10 +20,15 @@ const App = () => {
     }
   ])
 
+  const handleAddTodo = (todoTitle) => {
+    const updatedList = [...newTodo,{id:newTodo.length +1, title:todoTitle}]
+    setNewTodo(updatedList)
+  }
+
   return (
     <div>
       <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={setNewTodo}/>
+      <AddTodoForm onAddTodo={handleAddTodo}/>
       <TodoList list={newTodo}/>
     </div>
   );
