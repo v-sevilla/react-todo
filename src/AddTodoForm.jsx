@@ -12,7 +12,11 @@ const AddTodoForm = (props) => {
 
   const handleAddTodo = (e) => {
     e.preventDefault();
-    props.onAddTodo(todoTitle)
+    const newTodo = {
+      title: todoTitle,
+      id: Date.now(),
+    }
+    props.onAddTodo(newTodo)
     setTodoTitle("")
   }
 
