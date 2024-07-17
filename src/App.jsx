@@ -7,16 +7,15 @@ const App = () => {
 
   const [todoList, setTodoList] = useState([])
 
-  const handleAddTodo = (todoTitle) => {
-    const updatedList = [...todoList,{id:todoList.length +1, title:todoTitle}]
-    setTodoList(updatedList)
+  const addTodo = (newTodo) => {
+    setTodoList((previousTodoList) => [...previousTodoList, newTodo])
   }
 
   return (
     <div>
       <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={handleAddTodo}/>
-      <TodoList list={todoList} todoList={todoList}/>
+      <AddTodoForm onAddTodo={addTodo}/>
+      <TodoList list={todoList}/>
     </div>
   );
 }
