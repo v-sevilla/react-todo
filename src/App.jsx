@@ -15,7 +15,7 @@ const App = () => {
     <div>
       <h1>Todo List</h1>
       <AddTodoForm onAddTodo={addTodo}/>
-      <TodoList list={todoList}/>
+      <TodoList todoList={todoList}/>
     </div>
   );
 }
