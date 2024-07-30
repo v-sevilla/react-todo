@@ -2,7 +2,10 @@ import React from "react";
 
 const TodoListItem = ({title}) => {
   return (
-    <li>{title}</li>
+    <li>
+      {title}
+      <button type="button">Remove</button>
+    </li>
   );
 }
 
