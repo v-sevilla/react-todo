@@ -13,6 +13,9 @@ const App = () => {
         resolve({ data: {todoList: JSON.parse(localStorage.getItem("savedTodoList"))}})
       }, 2000)
     })
+    .then((result) => {
+      setTodoList(todoList)
+    })
   })
 
   useEffect(() => {
