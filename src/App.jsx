@@ -10,6 +10,13 @@ const App = () => {
   )
   
   useEffect(() => {
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve()}, 2000)
+      })
+    })
+
+  useEffect(() => {
   localStorage.setItem("savedTodoList", JSON.stringify(todoList))
   }, [todoList])
 
