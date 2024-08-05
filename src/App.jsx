@@ -16,7 +16,7 @@ const App = () => {
       }, 2000)
     })
     .then((result) => {
-      setTodoList(todoList)
+      setTodoList(result.data.todoList)
       setIsLoading(false)
     })
   })
