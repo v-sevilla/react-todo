@@ -6,7 +6,6 @@ import AddTodoForm from './AddTodoForm';
 const App = () => {
 
   const [todoList, setTodoList] = useState([])
-
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -40,6 +39,7 @@ const App = () => {
     <>
       <h1>Todo List</h1>
       <AddTodoForm onAddTodo={addTodo}/>
+      <p>Loading...</p>
       <TodoList onRemoveTodo={removeTodo} todoList={todoList}/>
     </>
   );
