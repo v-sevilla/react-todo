@@ -9,6 +9,14 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   const fetchData = async () => {
+
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization:`Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`
+        }
+      };
+    
     new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve({ data: {todoList: JSON.parse(localStorage.getItem("savedTodoList"))}})
@@ -47,5 +55,4 @@ const App = () => {
     </>
   );
 }
-
 export default App
