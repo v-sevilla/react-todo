@@ -8,7 +8,7 @@ const App = () => {
   const [todoList, setTodoList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
+  const fetchData = async () => {
     new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve({ data: {todoList: JSON.parse(localStorage.getItem("savedTodoList"))}})
@@ -18,7 +18,7 @@ const App = () => {
       setTodoList(result.data.todoList)
       setIsLoading(false)
     })
-  })
+  }
 
   useEffect(() => {
     if (isLoading !== true) {
