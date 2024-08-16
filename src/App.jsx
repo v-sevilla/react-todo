@@ -19,22 +19,25 @@ const App = () => {
         }
       };
     
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({ data: {todoList: JSON.parse(localStorage.getItem("savedTodoList"))}})
-      }, 2000)
-    })
-    .then((result) => {
-      setTodoList(result.data.todoList)
-      setIsLoading(false)
-    })
+    try {
+      const response = await fetch(API_ENDPOINT, options)
+      if (!response.ok) {
+        const message = `Error: ${response.status}`;
+        throw new Error(message);
+      }
+
+      const data = await response.json()
+      console.log(data)
+        
+      } 
+    catch (error) {
+      console.log(error.message)
+    }
   }
 
   useEffect(() => {
-    if (isLoading !== true) {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList))
-    }
-  }, [todoList])
+    fetchData();
+  });
 
   const addTodo = (newTodo) => {
     setTodoList((previousTodoList) => [...previousTodoList, newTodo])
