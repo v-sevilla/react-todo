@@ -27,9 +27,18 @@ const App = () => {
       }
 
       const data = await response.json()
-      console.log(data)
-        
-      } 
+      const todos = data.records.map((todo) => {
+        const newTodo =  {
+            id: todo.id,
+            title: todo.fields.title,
+            completedAt: todo.fields.completedAt
+        }
+        return newTodo
+      })
+
+      setTodoList(todos)
+      setIsLoading(false)
+    } 
     catch (error) {
       console.log(error.message)
     }
