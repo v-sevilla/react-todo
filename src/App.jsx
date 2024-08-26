@@ -8,23 +8,45 @@ const App = () => {
   const [todoList, setTodoList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({ data: {todoList: JSON.parse(localStorage.getItem("savedTodoList"))}})
-      }, 2000)
-    })
-    .then((result) => {
-      setTodoList(result.data.todoList)
+  const API_ENDPOINT = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
+
+  const fetchData = async () => {
+
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization:`Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`
+        }
+      };
+    
+    try {
+      const response = await fetch(API_ENDPOINT, options)
+      if (!response.ok) {
+        const message = `Error: ${response.status}`;
+        throw new Error(message);
+      }
+
+      const data = await response.json()
+      const todos = data.records.map((todo) => {
+        const newTodo =  {
+            id: todo.id,
+            title: todo.fields.title,
+            completedAt: todo.fields.completedAt
+        }
+        return newTodo
+      })
+
+      setTodoList(todos)
       setIsLoading(false)
-    })
-  })
+    } 
+    catch (error) {
+      console.log(error.message)
+    }
+  }
 
   useEffect(() => {
-    if (isLoading !== true) {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList))
-    }
-  }, [todoList])
+    fetchData();
+  });
 
   const addTodo = (newTodo) => {
     setTodoList((previousTodoList) => [...previousTodoList, newTodo])
@@ -47,5 +69,4 @@ const App = () => {
     </>
   );
 }
-
 export default App
