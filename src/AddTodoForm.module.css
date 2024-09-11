@@ -5,7 +5,7 @@ form {
 
 button:hover {
     background-color: rgb(85, 172, 63);
-    border: rgb(85, 172, 63);
+    border: 2px solid rgb(85, 172, 63);
 }
 
 .plusSignIcon {
