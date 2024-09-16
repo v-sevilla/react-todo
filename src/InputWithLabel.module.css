@@ -36,3 +36,15 @@
         padding: 0;
     }
 }
+
+@media (min-width: 651px) and (max-width: 1024px){
+    .label {
+        font-size: 2rem;
+        font-weight: 200;
+    }
+    .input {
+        font-size: 1.8rem;
+        padding: 0.7rem;
+        max-width: 275px;
+   }
+}
