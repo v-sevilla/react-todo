@@ -1,5 +1,6 @@
 .button:hover {
     background-color: rgba(229, 14, 14, 0.892);
+    border: solid rgba(229, 14, 14, 0.892);
 }
 
 .ListItem {
@@ -27,4 +28,15 @@
 .trashIcon {
     max-width: 1.7rem;
     padding: 0.2rem;
+}
+
+@media screen and (max-width: 650px){
+    .ListItem {
+        font-size: 1rem;
+        padding: 0.3rem 0.5rem;
+        margin: 0.5rem;
+        max-width: 275px;
+        min-width: 200px;
+        margin-right: 1rem;
+    }
 }

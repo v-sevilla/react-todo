@@ -23,3 +23,16 @@
     font-size: 2.2rem;
     font-weight: 300;
 }
+
+@media screen and (max-width: 650px){
+    .input, .label {
+        font-size: 1.5rem;
+        font-weight: 200;
+        max-width: 200px;
+        padding: 0.5rem;
+        margin: 0.5rem;
+    }   
+    .label {
+        padding: 0;
+    }
+}

@@ -14,3 +14,13 @@ button:hover {
     max-width: 2.7rem;
     margin: 0.3rem;
 }
+
+@media screen and (max-width: 650px){
+    .plusSignIcon {
+        max-width: 2.4rem;
+        margin: 0.3rem 0.5rem;
+    }
+    form {
+        flex-direction: column;
+    }
+  }
