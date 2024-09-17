@@ -14,3 +14,18 @@
 .card {
   padding: 2rem;
 }
+
+@media screen and (max-width: 650px){
+  #root {
+    max-width: 300px;
+    padding: 2rem 1rem 3rem;
+  }
+}
+
+@media (min-width: 651px) and (max-width: 1024px){
+  #root {
+    max-width: 500px;
+    padding: 3rem;
+    margin: 2rem;
+  }
+}
