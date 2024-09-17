@@ -1,0 +1,33 @@
+form {
+    display: flex;
+    align-items: center;
+}
+
+button:hover {
+    background-color: rgb(85, 172, 63);
+    border: 2px solid rgb(85, 172, 63);
+}
+
+.plusSignIcon {
+    display: flex;
+    justify-content: center;
+    max-width: 2.7rem;
+    margin: 0.3rem;
+}
+
+@media screen and (max-width: 650px){
+    .plusSignIcon {
+        max-width: 2.4rem;
+        margin: 0.3rem 0.5rem;
+    }
+    form {
+        flex-direction: column;
+    }
+  }
+
+  @media (min-width: 651px) and (max-width: 1024px){
+    .plusSignIcon {
+        max-width: 3rem;
+        margin: 0.3rem;
+    }
+}

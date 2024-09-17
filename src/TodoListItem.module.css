@@ -1,0 +1,50 @@
+.button:hover {
+    background-color: rgba(229, 14, 14, 0.892);
+    border: solid rgba(229, 14, 14, 0.892);
+}
+
+.ListItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.809);
+    background-color: rgba(67, 80, 127, 0.949);
+    box-shadow: 2px 2px 5px rgb(113, 115, 153);
+    border-radius: 10px;
+    padding: 0.5rem 0.7rem;
+    margin: 1.7rem 1rem;
+}
+
+.ListItem:hover {
+    background-color: rgba(90, 119, 180, 0.852);
+}
+
+.title {
+    padding: 0.5rem 1rem;
+}
+
+.trashIcon {
+    max-width: 1.7rem;
+    padding: 0.2rem;
+}
+
+@media screen and (max-width: 650px){
+    .ListItem {
+        font-size: 1rem;
+        padding: 0.3rem 0.5rem;
+        margin: 0.5rem;
+        max-width: 275px;
+        min-width: 200px;
+        margin-right: 1rem;
+    }
+}
+
+@media (min-width: 651px) and (max-width: 1024px){
+    .ListItem {
+        padding: 0.4rem 0.6rem;
+        margin: 1.5rem 0.7rem;
+        max-width: 300px;
+    }
+}

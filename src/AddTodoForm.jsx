@@ -1,5 +1,7 @@
 import React from "react";
 import InputWithLabel from "./InputWithLabel";
+import style from './AddTodoForm.module.css'
+import plusSign from "./assets/plusSign.svg"
 
 const AddTodoForm = ({onAddTodo}) => {
   
@@ -24,8 +26,8 @@ const AddTodoForm = ({onAddTodo}) => {
   return (
     <div>
       <form onSubmit={handleAddTodo}>
-        <InputWithLabel handleTitleChange={handleTitleChange} todoTitle={todoTitle}>Title</InputWithLabel>
-        <button type="submit">Add</button>
+        <InputWithLabel handleTitleChange={handleTitleChange} todoTitle={todoTitle}>Title:</InputWithLabel>
+        <button type="submit"><img className={style.plusSignIcon} src={plusSign}></img></button>
       </form>
     </div>
   )
