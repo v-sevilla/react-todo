@@ -1,6 +1,7 @@
 .button:hover {
     background-color: rgba(229, 14, 14, 0.892);
-    border: solid rgba(229, 14, 14, 0.892);
+    outline: 1px rgba(229, 14, 14, 0.892);
+    outline-offset: solid rgba(229, 14, 14, 0.892);
 }
 
 .ListItem {
