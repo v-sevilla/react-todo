@@ -7,19 +7,54 @@ const AddTodoForm = ({onAddTodo}) => {
   
   const [todoTitle, setTodoTitle] = React.useState('');
 
+  const postTodo = async (newTodo) => {
+    try {
+      const newTitle = {
+        fields: {
+          id: newTodo.id,
+          title: newTodo.title
+        }
+      }
+    
+      const response = await fetch(
+        `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/Default`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+          },
+          body: JSON.stringify(newTitle),
+        }
+      );
+
+      if (!response.ok) {
+        const message = `Error has ocurred: ${response.status}`;
+        throw new Error(message);
+      }
+
+      const dataResponse = await response.json();
+      return dataResponse;
+    } 
+    catch (error) {
+      console.log(error.message);
+      return null;
+    }
+  }
+
   const handleTitleChange = (event) => {
     const newTodoTitle = event.target.value
     setTodoTitle(newTodoTitle)
     console.log(event)
   }
 
-  const handleAddTodo = (e) => {
+  const handleAddTodo = async (e) => {
     e.preventDefault();
     const newTodo = {
       title: todoTitle,
-      id: Date.now(),
     }
     onAddTodo(newTodo)
+    await postTodo(newTodo)
     setTodoTitle("")
   }
 

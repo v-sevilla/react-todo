@@ -47,7 +47,7 @@ const App = () => {
 
   useEffect(() => {
     fetchData();
-  });
+  },[]);
 
   const addTodo = (newTodo) => {
     setTodoList((previousTodoList) => [...previousTodoList, newTodo])
