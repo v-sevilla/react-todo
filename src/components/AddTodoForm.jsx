@@ -1,7 +1,7 @@
 import React from "react";
 import InputWithLabel from "./InputWithLabel";
 import style from './AddTodoForm.module.css'
-import plusSign from "./assets/plusSign.svg"
+import plusSign from "../assets/plusSign.svg"
 
 const AddTodoForm = ({onAddTodo}) => {
   

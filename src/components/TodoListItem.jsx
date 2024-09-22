@@ -1,6 +1,6 @@
 import React from "react";
 import style from './TodoListItem.module.css'
-import trashcan from "./assets/trashcan.svg"
+import trashcan from "../assets/trashcan.svg"
 
 const TodoListItem = ({title, onRemoveTodo, id}) => {
   return (
