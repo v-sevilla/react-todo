@@ -1,10 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import InputWithLabel from "./InputWithLabel";
 import style from './AddTodoForm.module.css'
 import plusSign from "../assets/plusSign.svg"
 
 const AddTodoForm = ({onAddTodo}) => {
-  
   const [todoTitle, setTodoTitle] = React.useState('');
 
   const handleTitleChange = (event) => {
@@ -32,5 +32,9 @@ const AddTodoForm = ({onAddTodo}) => {
     </div>
   )
 }
+
+AddTodoForm.propTypes = {
+  onAddTodo: PropTypes.func
+}
   
-  export default AddTodoForm
+export default AddTodoForm
