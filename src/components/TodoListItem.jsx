@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import style from './TodoListItem.module.css'
-import trashcan from "./assets/trashcan.svg"
+import trashcan from "../assets/trashcan.svg"
 
 const TodoListItem = ({title, onRemoveTodo, id}) => {
   return (
@@ -9,6 +10,12 @@ const TodoListItem = ({title, onRemoveTodo, id}) => {
       <button className={style.button} type="button" onClick={() => onRemoveTodo(id)}><img className={style.trashIcon} src={trashcan}></img></button>
     </li>
   );
+}
+
+TodoListItem.propTypes = {
+  title: PropTypes.string,
+  onRemoveTodo: PropTypes.func,
+  id: PropTypes.string
 }
 
 export default TodoListItem

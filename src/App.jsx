@@ -1,15 +1,15 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './App.css'
-import TodoList from './TodoList';
-import AddTodoForm from './AddTodoForm';
+import TodoList from './components/TodoList';
+import AddTodoForm from './components/AddTodoForm';
 
 const App = () => {
 
   const [todoList, setTodoList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const API_ENDPOINT = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
+  const API_ENDPOINT = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?view=Grid%20view`
 
   const fetchData = async () => {
 
@@ -28,16 +28,22 @@ const App = () => {
       }
 
       const data = await response.json()
-      const todos = data.records.map((todo) => {
-        const newTodo =  {
-            id: todo.id,
-            title: todo.fields.title,
-            completedAt: todo.fields.completedAt
-        }
-        return newTodo
+      const todos = data.records.map((todo) => ({
+        id: todo.id,
+        title: todo.fields.title,
+        completedAt: todo.fields.completedAt
+      }))
+   
+      const sortTodoTitleDesc = todos.sort((a, b) => {
+        const titleA = a.title.toLowerCase()
+        const titleB = b.title.toLowerCase()
+        
+        if (titleA < titleB) return 1;
+        else if (titleA > titleB) return -1;
+        return 0
       })
 
-      setTodoList(todos)
+      setTodoList(sortTodoTitleDesc)
       setIsLoading(false)
     } 
     catch (error) {
