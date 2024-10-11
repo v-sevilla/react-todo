@@ -9,6 +9,45 @@ const TodoContainer = () => {
 
   const API_ENDPOINT = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?view=Grid%20view`
 
+  const postTodo = async (todo) => {
+    try {
+      const newTitle = {
+        fields: {
+          id: todo.id,
+          title: todo.title
+        }
+      }
+    
+      const response = await fetch(
+        `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/Default`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+          },
+          body: JSON.stringify(newTitle),
+        }
+      );
+
+      if (!response.ok) {
+        const message = `Error has ocurred: ${response.status}`;
+        throw new Error(message);
+      }
+
+      const dataResponse = await response.json();
+      const newTodo = {
+        title: dataResponse.fields.title,
+        id: dataResponse.fields.id,
+      }
+      return newTodo;
+    } 
+    catch (error) {
+      console.log(error.message);
+      return null
+    }
+  }
+  
   const fetchData = async () => {
 
     const options = {
@@ -53,8 +92,9 @@ const TodoContainer = () => {
     fetchData();
   },[]);
 
-  const addTodo = (newTodo) => {
-    setTodoList((previousTodoList) => [...previousTodoList, newTodo])
+  const addTodo = async (newTodo) => {
+    const addNewTodo = await postTodo(newTodo)
+    setTodoList((previousTodoList) => [...previousTodoList, addNewTodo])
   }
 
   const removeTodo = (id) => {
