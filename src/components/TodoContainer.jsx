@@ -48,6 +48,36 @@ const TodoContainer = () => {
     }
   }
   
+  const deleteTodo = async (id) => {
+    const options = {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const response = await fetch (
+        `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/Default/${id}`, options)
+
+      if (!response.ok) {
+        const message = `Error has ocurred: ${response.status}`;
+        throw new Error(message);
+      }
+
+      const data = await response.json();
+      if (!data.deleted) {
+        throw new Error("Todo not deleted");
+      }
+      return id
+    } 
+    catch (error) {
+      console.log(error.message);
+      return null;
+    }
+  }
+
   const fetchData = async () => {
 
     const options = {
