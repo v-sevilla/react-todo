@@ -59,7 +59,7 @@ const TodoContainer = () => {
 
     try {
       const response = await fetch (
-        `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/Default/${id}`, options)
+        `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}/${id}`, options)
 
       if (!response.ok) {
         const message = `Error has ocurred: ${response.status}`;
@@ -134,7 +134,7 @@ const TodoContainer = () => {
 
   return (
     <> 
-      <h1>Todo List</h1>
+      <h1>{import.meta.env.VITE_TABLE_NAME}</h1>
       <AddTodoForm onAddTodo={addTodo}/>
       {isLoading ? (
         <p>Loading ...</p>
