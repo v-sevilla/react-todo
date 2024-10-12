@@ -127,9 +127,9 @@ const TodoContainer = () => {
     setTodoList((previousTodoList) => [...previousTodoList, addNewTodo])
   }
 
-  const removeTodo = (id) => {
-    const filteredTodo = todoList.filter((todo) => todo.id !== id)
-    setTodoList(filteredTodo)
+  const removeTodo = async (id) => {
+    const filteredTodo = await deleteTodo(id)
+    setTodoList((todoList) => todoList.filter((todo) => todo.id !== filteredTodo));
   }
 
   return (
