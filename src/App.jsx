@@ -6,7 +6,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<TodoContainer/>}/>
+        <Route path='/' element={<TodoContainer tableName={import.meta.env.VITE_TABLE_NAME}/>}/>
         <Route path='/new' element={
           <h1>New Todo List</h1>
         }/>

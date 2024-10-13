@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 import TodoList from '../components/TodoList';
 import AddTodoForm from '../components/AddTodoForm';
 
-const TodoContainer = () => {
+const TodoContainer = ({tableName}) => {
 
   const [todoList, setTodoList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const API_ENDPOINT = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?view=Grid%20view`
+  const API_ENDPOINT = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${tableName}?view=Grid%20view`
 
   const postTodo = async (todo) => {
     try {
@@ -19,7 +19,7 @@ const TodoContainer = () => {
       }
     
       const response = await fetch(
-        `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`,
+        `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${tableName}`,
         {
           method: "POST",
           headers: {
@@ -59,7 +59,7 @@ const TodoContainer = () => {
 
     try {
       const response = await fetch (
-        `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}/${id}`, options)
+        `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${tableName}/${id}`, options)
 
       if (!response.ok) {
         const message = `Error has ocurred: ${response.status}`;
@@ -134,7 +134,7 @@ const TodoContainer = () => {
 
   return (
     <> 
-      <h1>{import.meta.env.VITE_TABLE_NAME}</h1>
+      <h1>{tableName}</h1>
       <AddTodoForm onAddTodo={addTodo}/>
       {isLoading ? (
         <p>Loading ...</p>
@@ -143,6 +143,10 @@ const TodoContainer = () => {
       }
     </>
   );
+}
+
+TodoContainer.propTypes = {
+  tableName: PropTypes.string
 }
 
 export default TodoContainer
