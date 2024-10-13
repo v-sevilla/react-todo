@@ -13,8 +13,8 @@ const AddTodoForm = ({onAddTodo}) => {
     console.log(event)
   }
 
-  const handleAddTodo = async (e) => {
-    e.preventDefault();
+  const handleAddTodo = async (event) => {
+    event.preventDefault();
     const newTodo = {
       title: todoTitle,
     }
