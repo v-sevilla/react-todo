@@ -39,7 +39,7 @@ const TodoContainer = ({tableName}) => {
       const dataResponse = await response.json();
       const newTodo = {
         title: dataResponse.fields.title,
-        id: dataResponse.fields.id,
+        id: dataResponse.id,
       }
       return newTodo;
     } 
