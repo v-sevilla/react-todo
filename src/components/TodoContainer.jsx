@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import PropTypes from "prop-types";
 import TodoList from '../components/TodoList';
 import AddTodoForm from '../components/AddTodoForm';
 
@@ -120,10 +121,10 @@ const TodoContainer = ({tableName}) => {
 
   useEffect(() => {
     fetchData();
-  },[]);
+  },[tableName]);
 
-  const addTodo = async (newTodo) => {
-    const addNewTodo = await postTodo(newTodo)
+  const addTodo = async (title) => {
+    const addNewTodo = await postTodo(title)
     setTodoList((previousTodoList) => [...previousTodoList, addNewTodo])
   }
 
