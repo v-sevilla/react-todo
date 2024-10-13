@@ -1,15 +1,18 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import './App.css'
+import Homepage from './components/Homepage';
 import TodoContainer from './components/TodoContainer';
 
 const App = () => {
   return (
     <BrowserRouter>
+      <nav>
+        <Link to="/"><button>Home</button></Link>
+        <Link to="/todolist"><button>Todo List</button></Link>
+      </nav>
       <Routes>
-        <Route path='/' element={<TodoContainer tableName={import.meta.env.VITE_TABLE_NAME}/>}/>
-        <Route path='/new' element={
-          <h1>New Todo List</h1>
-        }/>
+        <Route path='/' element={<Homepage/>}/>
+        <Route path='/todolist' element={<TodoContainer tableName={import.meta.env.VITE_TABLE_NAME}/>}/>
       </Routes>
     </BrowserRouter>
   );
