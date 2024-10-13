@@ -7,54 +7,18 @@ import plusSign from "../assets/plusSign.svg"
 const AddTodoForm = ({onAddTodo}) => {
   const [todoTitle, setTodoTitle] = React.useState('');
 
-  const postTodo = async (newTodo) => {
-    try {
-      const newTitle = {
-        fields: {
-          id: newTodo.id,
-          title: newTodo.title
-        }
-      }
-    
-      const response = await fetch(
-        `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/Default`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
-          },
-          body: JSON.stringify(newTitle),
-        }
-      );
-
-      if (!response.ok) {
-        const message = `Error has ocurred: ${response.status}`;
-        throw new Error(message);
-      }
-
-      const dataResponse = await response.json();
-      return dataResponse;
-    } 
-    catch (error) {
-      console.log(error.message);
-      return null;
-    }
-  }
-
   const handleTitleChange = (event) => {
     const newTodoTitle = event.target.value
     setTodoTitle(newTodoTitle)
     console.log(event)
   }
 
-  const handleAddTodo = async (e) => {
-    e.preventDefault();
+  const handleAddTodo = async (event) => {
+    event.preventDefault();
     const newTodo = {
       title: todoTitle,
     }
     onAddTodo(newTodo)
-    await postTodo(newTodo)
     setTodoTitle("")
   }
 
