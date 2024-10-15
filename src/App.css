@@ -1,7 +1,6 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 5rem;
+  padding: 2rem 3rem;
   text-align: center;
   background-color: rgba(38, 44, 63, 0.985);
   border-radius: 30px;
@@ -13,6 +12,26 @@
 
 .card {
   padding: 2rem;
+}
+
+nav {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.5rem;
+}
+
+.navButton {
+  justify-content: space-evenly;
+  margin: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+}
+
+.navButton:hover {
+  background-color: rgb(254, 226, 69);
+  outline: none;
+  color: rgb(33,33,41);
 }
 
 @media screen and (max-width: 650px){
